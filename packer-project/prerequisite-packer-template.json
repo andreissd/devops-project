@@ -12,7 +12,7 @@
   "provisioners": [
     {
       "type": "shell",
-      "script": "./scripts/prerequisite-setup.ps1"
+      "script": "/home/devops/devops-project/packer-project/scripts/prerequisite-setup.ps1"
     }
   ]
 }
