@@ -1,0 +1,33 @@
+name: Build AMI
+
+on: [push]
+
+jobs:
+  build-ami:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Packer
+        run: |
+          wget https://releases.hashicorp.com/packer/1.7.0/packer_1.7.0_linux_amd64.zip
+          unzip packer_1.7.0_linux_amd64.zip
+          sudo mv packer /usr/local/bin/
+          packer --version
+        shell: bash
+
+      - name: Build Prerequisite AMI
+        run: packer build packer-project/prerequisite-packer-template.json
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        working-directory: devops-project
+
+      - name: Build Application AMI
+        run: packer build packer-project/app-packer-template.json
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        working-directory: devops-project
