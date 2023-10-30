@@ -2,7 +2,7 @@ provider "aws" {
   region = "us-east-1"
 }
 
-# Definiți o variabilă locală pentru numărul de VM-uri
+# Define a local variable for the VMs number
 variable "num_windows_instances" {
   type    = number
   default = 1
@@ -13,7 +13,7 @@ variable "num_ubuntu_instances" {
   default = 1
 }
 
-# Creați grupurile de instanțe pentru Windows și Ubuntu
+# Create the instance groups for Windows and Ubuntu
 resource "aws_instance" "windows_example" {
   ami           = "ami-0ff7f29dc49423a92"
   instance_type = "t2.micro"
