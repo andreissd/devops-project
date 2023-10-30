@@ -3,12 +3,12 @@ pipeline {
     stages {
         stage('Prerequisite Image') {
             steps {
-                sh 'packer build packer-project/prerequisite-packer-template.json'
+                sh 'packer build packer-project/prerequisite-install.json'
             }
         }
         stage('Application Deployment & Image') {
             steps {
-                sh 'packer build packer-project/app-packer-template.json'
+                sh 'packer build packer-project/app-install.json'
             }
         }
     }

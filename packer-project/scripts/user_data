@@ -1,0 +1,5 @@
+Enable-PSRemoting -Force
+Set-Item WSMan:\localhost\Service\Auth\Basic -Value $true
+Set-Item WSMan:\localhost\Service\AllowUnencrypted -Value $true
+Set-Item WSMan:\localhost\Service\AllowEncrypted -Value $false
+New-NetFirewallRule -Name winrm_http -DisplayName "Windows Remote Management (HTTP-In)" -Enabled True -Direction Inbound -Protocol TCP -Action Allow -Profile Any -LocalPort 5985
