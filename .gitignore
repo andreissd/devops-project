@@ -1,3 +1,1 @@
 variables.pkrvars.hcl
-# Large Terraform .terraform directories
-.terraform/
