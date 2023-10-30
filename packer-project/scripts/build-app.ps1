@@ -9,6 +9,8 @@ Set-Location -Path "C:\Users\Administrator\HellowWorldApp"
 
 [Environment]::SetEnvironmentVariable("PATH", "$env:PATH;C:\app", [System.EnvironmentVariableTarget]::Machine)
 
+[Environment]::SetEnvironmentVariable("PATH", "$env:PATH;C:\ProgramData\chocolatey\lib\dotnet-runtime\", [System.EnvironmentVariableTarget]::Machine)
+
 [Environment]::SetEnvironmentVariable("application_to_run", "C:\app\HelloWorldApp.exe", [System.EnvironmentVariableTarget]::Machine)
 
 # Run the 'dotnet build' command to build your application

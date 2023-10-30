@@ -15,7 +15,7 @@ variable "num_ubuntu_instances" {
 
 # Creați grupurile de instanțe pentru Windows și Ubuntu
 resource "aws_instance" "windows_example" {
-  ami           = "ami-0efd0e356e33d31de"
+  ami           = "ami-0ff7f29dc49423a92"
   instance_type = "t2.micro"
   count         = var.num_windows_instances
   key_name      = "packer key"
